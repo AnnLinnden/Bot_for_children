@@ -1,6 +1,7 @@
 import asyncio
 import logging
 from config import bot, dp, set_commands, database_manager
+from db.db_fillers import run_all_fillers
 
 # Включаем логирование, пишем сразу в консоль и в файл
 handler_console = logging.StreamHandler()
@@ -15,6 +16,9 @@ async def main():
     logger.info("Запускаем бота")
     dp.include_routers()
 
+
+
+
     # запуск в режиме long polling: при запуске бот очищает все обновления, прилетевшие, пока он не работал
     try:
         logger.info("Удаляем вебхуки, сбрасываем обновления, пришедшие за время простоя")
@@ -27,4 +31,5 @@ async def main():
         logger.info("Останавливаем бота")
         await bot.session.close()
 
+asyncio.run(run_all_fillers())  # для заполнения всех баз данных
 asyncio.run(main())
