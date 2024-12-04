@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+../.env
+bot.log
+migrations
+messages
+.venv/Lib
