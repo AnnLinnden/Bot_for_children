@@ -5,6 +5,6 @@ from aiogram.filters.command import Command
 edu_router = Router()
 
 
-@edu_router.message(Command('food'))
+@edu_router.message(Command('edu'))
 async def edu_qa(message: Message):
     await message.answer("")

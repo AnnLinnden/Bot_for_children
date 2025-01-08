@@ -8,4 +8,4 @@ class MenuItem(Base):
     id = Column(Integer, Identity(start=1), primary_key=True, autoincrement=True)
     command = Column(String, unique=True, nullable=False)
     description = Column(String, nullable=False)
-    response = Column(String, nullable=False)
+    handler = Column(String, nullable=False)

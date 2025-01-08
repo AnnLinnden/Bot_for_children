@@ -2,9 +2,9 @@ from aiogram import Router
 from aiogram.types import Message
 from aiogram.filters.command import Command
 
-job_router = Router()
+future_router = Router()
 
 
-@job_router.message(Command('work'))
-async def job_qa(message: Message):
+@future_router.message(Command('future'))
+async def future_qa(message: Message):
     await message.answer("")

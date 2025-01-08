@@ -4,15 +4,18 @@ from sqlalchemy.sql import text
 from db.models import MenuItem
 
 menu_items = [
-    {"command": "start", "description": "🔄 Перезапустить бота", "response": "Привет! Я готов помочь!"},
-    {"command": "laws", "description": "‍⚖️ Помощь юриста", "response": "Здесь вы узнаете о льготах, выплатах и прочем."},
-    {"command": "edu", "description": "📚 Образование", "response": "Помощь в выборе учебного заведения."},
-    {"command": "health", "description": "🩺 Здоровье", "response": "Помощь"},
-    {"command": "work", "description": "💳 Работа и деньги", "response": "Помощь в выборе"},
-    {"command": "room", "description": "🏢 Жизнь в общежитии", "response": "Помощь в выборе"},
-    {"command": "flat", "description": "🏠 Жизнь в своей квартире", "response": "Помощь в выборе"},
-    {"command": "psy", "description": "️❤️ Психологическая поддержка", "response": "Помощь в выборе"},
-    {"command": "food", "description": "🥣 Еда: что покупать и как готовить", "response": "Помощь в выборе"},
+    {"command": "start", "description": "🔄 Перезапустить бота", "handler": "start_router"},
+    {"command": "law", "description": "‍⚖️ Помощь юриста", "handler": "law_router"},
+    {"command": "social", "description": "🤝 Соцподдержка и льготы", "handler": "social_router"},
+    {"command": "edu", "description": "📚 Образование", "handler": "edu_router"},
+    {"command": "health", "description": "🩺 Здоровье", "handler": "health_router"},
+    {"command": "work", "description": "💼 Работа", "handler": "job_router"},
+    {"command": "money", "description": "💰 Деньги", "handler": "money_router"},
+    {"command": "room", "description": "🏢 Жизнь в общежитии", "handler": "room_router"},
+    {"command": "flat", "description": "🏠 Жизнь в своей квартире", "handler": "flat_router"},
+    {"command": "psy", "description": "️❤️ Психологическая поддержка", "handler": "psy_router"},
+    {"command": "food", "description": "🥣 Еда: что покупать и как готовить", "handler": "food_router"},
+    {"command": "future", "description": "🌟 Планирование будущего", "handler": "future_router"},
 ]
 
 
@@ -28,7 +31,7 @@ async def fill_menu():
                 menu_item = MenuItem(
                     command=item["command"],
                     description=item["description"],
-                    response=item["response"]
+                    handler=item["handler"]
                 )
                 session.add(menu_item)
             session.flush()

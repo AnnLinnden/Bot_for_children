@@ -5,6 +5,6 @@ from aiogram.filters.command import Command
 psy_router = Router()
 
 
-@psy_router.message(Command('food'))
+@psy_router.message(Command('psy'))
 async def psy_qa(message: Message):
     await message.answer("")

@@ -5,6 +5,6 @@ from aiogram.filters.command import Command
 room_router = Router()
 
 
-@room_router.message(Command('food'))
+@room_router.message(Command('room'))
 async def room_qa(message: Message):
     await message.answer("")

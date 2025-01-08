@@ -2,8 +2,8 @@ import asyncio
 import logging
 from config import bot, dp, set_commands, database_manager
 from db.db_fillers import run_all_fillers
-from handlers import (food_router, room_router, edu_router, flat_router,
-                      job_router, law_router, psy_router, start_router)
+from handlers import (food_router, room_router, edu_router, flat_router, health_router, social_router,
+                      job_router, law_router, psy_router, start_router, money_router, future_router)
 
 # Включаем логирование, пишем сразу в консоль и в файл
 handler_console = logging.StreamHandler()
@@ -16,8 +16,8 @@ logger = logging.getLogger(__name__)
 
 async def main():
     logger.info("Запускаем бота")
-    dp.include_routers(food_router, room_router, edu_router, flat_router,
-                       job_router, law_router, psy_router, start_router)
+    dp.include_routers(food_router, room_router, edu_router, flat_router, health_router, social_router,
+                       job_router, law_router, psy_router, start_router, money_router, future_router)
 
     # запуск в режиме long polling: при запуске бот очищает все обновления, прилетевшие, пока он не работал
     try:

@@ -5,4 +5,8 @@ from flat_handler import flat_router
 from job_handler import job_router
 from legal_info_handler import law_router
 from psychological_support_handler import psy_router
+from health_router import health_router
 from start_handler import start_router
+from money_handler import money_router
+from social_handler import social_router
+from future_handler import future_router

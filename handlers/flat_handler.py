@@ -5,6 +5,6 @@ from aiogram.filters.command import Command
 flat_router = Router()
 
 
-@flat_router.message(Command('food'))
+@flat_router.message(Command('flat'))
 async def flat_qa(message: Message):
     await message.answer("")
