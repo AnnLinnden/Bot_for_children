@@ -1,12 +1,20 @@
-from cooking_handler import food_router
-from dormitory_handler import room_router
-from edu_handler import edu_router
-from flat_handler import flat_router
-from job_handler import job_router
-from legal_info_handler import law_router
-from psychological_support_handler import psy_router
-from health_router import health_router
-from start_handler import start_router
-from money_handler import money_router
-from social_handler import social_router
-from future_handler import future_router
+from pathlib import Path
+from importlib import import_module
+from aiogram import Router
+
+handlers_path = Path(__file__).parent
+handlers_files = handlers_path.glob('*_handler.py')
+
+# собираем все роутеры в один список, чтобы потом импортировать их в main.py
+all_routers = []
+for handler_file in handlers_files:
+    module_name = f'handlers.{handler_file.stem}'
+    module = import_module(module_name)
+
+    for attribute_name in dir(module):
+        if attribute_name.endswith("_router"):
+            attribute = getattr(module, attribute_name)
+            if isinstance(attribute, Router):  # Проверяем, что это роутер
+                all_routers.append(attribute)
+                break
+

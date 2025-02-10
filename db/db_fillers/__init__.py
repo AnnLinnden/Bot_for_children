@@ -1,6 +1,6 @@
 import asyncio
-from .fill_main_menu import fill_menu  # добавить сюда все остальные таблицы
+from .fill_qa_table import fill_qa_items  # добавить сюда все таблицы
 
 
 async def run_all_fillers():
-    await fill_menu()  # добавить вызовы всех функций из датафиллеров
+    await fill_qa_items()  # добавить вызовы всех функций из датафиллеров

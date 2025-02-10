@@ -29,21 +29,16 @@ dp = Dispatcher(storage=redis_storage)
 async def set_commands():
     commands_list = [
         BotCommand(command='start', description='🔄 Перезапустить бота'),
-        BotCommand(command='laws', description='👨‍⚖️ Юридические вопросы: квартира, льготы, выплаты и пр.'),
-        BotCommand(command='edu', description='📚 Образование: школа, колледж, вуз'),
-        BotCommand(command='health', description='🩺 Здоровье (и что делать, если заболел)'),
-        BotCommand(command='work', description='💳 Работа и деньги'),
-        BotCommand(command='room', description='🏢 Жизнь в общежитии после выпуска'),
+        BotCommand(command='laws', description='⚖️ Помощь юриста'),
+        BotCommand(command='social', description='🤝 Соцподдержка и льготы'),
+        BotCommand(command='edu', description='📚 Образование'),
+        BotCommand(command='health', description='🩺 Здоровье'),
+        BotCommand(command='work', description='💼 Работа'),
+        BotCommand(command='money', description='💰 Деньги'),
+        BotCommand(command='room', description='🏢 Жизнь в общежитии'),
         BotCommand(command='flat', description='🏠 Жизнь в своей квартире'),
         BotCommand(command='psy', description='❤️ Психологическая поддержка'),
         BotCommand(command='food', description='🥣 Еда: что покупать и как готовить'),
+        BotCommand(command='future', description='🌟 Планирование будущего')
         ]
-    await bot.set_my_commands(commands_list, BotCommandScopeDefault())
-
-
-async def set_commands_from_db():
-    commands = await db.models.MenuItem.get_all_menu_items()  # Достаем все записи из таблицы
-    commands_list = [
-        BotCommand(command=item.command, description=item.description) for item in commands
-    ]
     await bot.set_my_commands(commands_list, BotCommandScopeDefault())
